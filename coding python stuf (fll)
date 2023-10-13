@@ -1,0 +1,32 @@
+from hub import light_matrix, port
+import runloop, motor, motor_pair
+
+async def main():
+    # write your code here
+    await light_matrix.write("sugoma")
+    motor.run_for_degrees(port.A, 720, 360)
+    motor.run_for_degrees(port.E, 720, -360)
+runloop.run(main())
+
+#second thing
+''
+from hub import light_matrix, motion_sensor, port
+import motor, motor_pair, runloop
+vel = motor.velocity
+async def main():
+    # write code (this is a comment)
+    await light_matrix.write("yo")
+    motor_pair.unpair(motor_pair.PAIR_1) #unpairs pair 1
+    motor_pair.pair(motor_pair.PAIR_1, port.C, port.D) #pairs motors c and d
+    one = motor_pair.PAIR_1
+    '''
+    motor_pair.move(motor_pair.PAIR_1,0,velocity=450) # this is moves pair(pair1, steering, at a velocity of 850 cm(?)/s)
+    await runloop.sleep_ms(1500) # this makes it wait for 1.5 sec, or 1500 ms)
+    motor_pair.stop(motor_pair.PAIR_1) #this stops motors
+    ''' #this pink thingy just ignores the code, made using triple quotation mark
+    await motor_pair.move_for_time(motor_pair.PAIR_1,1500, 50, velocity=400, stop=motor.HOLD)
+    for i in range(0,10):
+        motor.HOLD
+    range(4) 
+    motor_pair.move(one, 360, velocity=720)
+''
