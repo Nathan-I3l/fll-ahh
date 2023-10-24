@@ -9,15 +9,28 @@ dt=DriveBase(Motor(Port.B), Motor(Port.F, Direction.COUNTERCLOCKWISE),56,84)
 #dt.settings(500,100)
 #dt.distance_control.pid(1000,0,200)
 #dt.straight(1000)
-am=Motor(Port.E, positive_direction=Direction.CLOCKWISE,)
+am=Motor(Port.E, positive_direction=Direction.COUNTERCLOCKWISE)
+am1=Motor(Port.A, positive_direction=Direction.CLOCKWISE)
+adt=DriveBase(am, am1, 56, 84)
+adt.straight(100)
+dt.straight(611)
+dt.turn(-45)
+dt.straight(250)
+dt.turn(90)
+dt.straight(150)
+dt.straight(-150)
+dt.straight(150)
+dt.straight(-150)
+dt.straight(150)
+dt.straight(-150)
+adt.straight(-100)
 
-am1=Motor(Port.A, positive_direction=Direction.COUNTERCLOCKWISE)
-am.run_angle(1500,180, wait=False)
+#am.run_angle(1500,180, wait=False)
 
-am1.run_angle(1500,180)
-wait(1500)
-am.run_angle(-1500,180, wait=False)
-am1.run_angle(-1500,180)
+#am1.run_angle(1500,180)
+#wait(1500)
+#am.run_angle(1500,-180, wait=False)
+#am1.run_angle(-1500,180)
 
 #second thing
 ''
@@ -40,4 +53,6 @@ async def main():
         motor.HOLD
     range(4) 
     motor_pair.move(one, 360, velocity=720)
+''
+
 ''
